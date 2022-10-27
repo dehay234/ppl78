@@ -6,10 +6,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
+import java.util.concurrent.Flow;
 
 public class Bouquet {
-    private int price;
-    private ArrayList<Flower> flowers;
+    private static int price;
+    private static ArrayList<Flower> flowers;
 
     public Bouquet(){
         flowers = new ArrayList<Flower>();
@@ -17,7 +18,7 @@ public class Bouquet {
         flowers.add(new Flower("Sesylia",1,14,20));
 
     }
-    public void showBouquet(){
+    public static void showBouquet(){
         Iterator it = flowers.iterator();
         while (it.hasNext()){
             Flower f = (Flower)it.next();
@@ -26,6 +27,24 @@ public class Bouquet {
     }
     public Flower getFlower(){
         return flowers.get(1);
+    }
+    public static void addFlower(){
+        System.out.println("Flower added");
+    }
+
+    public static void addAccessory(){
+        System.out.println("Accessory added");
+    }
+
+    public static void deleteFlower(){
+        System.out.println("Flower deleted");
+    }
+    public static void deleteAccessory(){
+        System.out.println("Accessory edited");
+    }
+
+    public static void buyBouquet(){
+        System.out.println("Bouquet is bought");
     }
 
     public void sort(){

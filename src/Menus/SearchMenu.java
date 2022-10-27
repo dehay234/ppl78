@@ -9,26 +9,29 @@ import java.util.Scanner;
 public class SearchMenu {
 
     public SearchMenu(){
-        System.out.println("---------Search Menu----------\n" +
-                "1.Search flower\n" +
-                "2.Search accessory\n"+
-                "3.Change flower properties");
+
 
         Scanner scanner = new Scanner(System.in);
-        /*Bouquet b1 = new Bouquet();
-        SearchInvoker invoker = new SearchInvoker();
-        invoker.changeProperties(b1.getFlower());
-        b1.showBouquet();*/
         Command searchAccessory =new SearchAccessory();
         Command searchFlower = new SearchFlower();
-
+        boolean loop = true;
         SearchInvoker invoker = new SearchInvoker(searchFlower,searchAccessory);
+        while (loop) {
+            System.out.println("---------Search Menu----------\n" +
+                    "1.Search flower\n" +
+                    "2.Search accessory\n"+
+                    "3.Exit");
+            int choice = scanner.nextInt();
+            if (choice == 1)
+                invoker.searchFlower();
+            else if (choice == 2)
+                invoker.searchAccessory();
+            else if (choice == 3)
+                loop=false;
+            else
+                System.out.println("Wrong choice");
+        }
 
-        int choice =scanner.nextInt();
-        if(choice==1)
-            searchFlower.execute();
-        else
-            searchAccessory.execute();
 
     }
 
