@@ -1,5 +1,6 @@
 package Invokers;
 
+import BouquetParts.*;
 import Menus.Command;
 import recievers.BouquetMenuRecievers.*;
 
@@ -10,14 +11,16 @@ public class BouquetInvoker {
     Command delAcc;
     Command buy;
     Command show;
+    Command sort;
 
-    public BouquetInvoker(){
-        addFlow = new AddFlower();
-        addAcc = new AddAccessory();
+    public BouquetInvoker(Flower f, Accessory accessory){
+        addFlow = new AddFlower(f);
+        addAcc = new AddAccessory(accessory);
         delFlow = new DeleteFlower();
         delAcc = new DeleteAccessory();
         buy = new BuyBouquet();
         show = new ShowBouquet();
+        sort = new Sorter();
     }
 
     public void addFlower(){
@@ -38,6 +41,7 @@ public class BouquetInvoker {
     public void showBouquet(){
         show.execute();
     }
+    public void sort(){sort.execute();}
 
 
 
