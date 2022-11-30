@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="523.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visual.SceneSearchAccessoryController">
+   <children>
+      <CheckBox fx:id="varietyCheckBox" layoutX="50.0" layoutY="34.0" mnemonicParsing="false" onAction="#selectVarietyMethod" prefHeight="33.0" prefWidth="107.0" text="Variety">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="priceCheckBox" layoutX="186.0" layoutY="34.0" mnemonicParsing="false" onAction="#selectPriceMethod" prefHeight="33.0" prefWidth="107.0" text="Price">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </CheckBox>
+      <TextField fx:id="textField" layoutX="321.0" layoutY="38.0" prefHeight="24.0" prefWidth="365.0" />
+      <Button fx:id="searchButton" layoutX="695.0" layoutY="34.0" mnemonicParsing="false" onAction="#submit" prefHeight="25.0" prefWidth="71.0" text="Search">
+         <font>
+            <Font name="Baskerville Old Face" size="16.0" />
+         </font>
+      </Button>
+      <ListView fx:id="listView" layoutX="178.0" layoutY="107.0" prefHeight="370.0" prefWidth="590.0" />
+      <Button fx:id="addButton" layoutX="24.0" layoutY="123.0" mnemonicParsing="false" onAction="#addToBouquet" prefHeight="39.0" prefWidth="133.0" text="Add to bouquet" visible="false">
+         <font>
+            <Font name="Baskerville Old Face" size="16.0" />
+         </font>
+      </Button>
+      <Button fx:id="backButton" layoutX="24.0" layoutY="438.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="133.0" text="Back">
+         <font>
+            <Font name="Baskerville Old Face" size="16.0" />
+         </font>
+      </Button>
+      <Label fx:id="errorSearchLabel" layoutX="321.0" layoutY="7.0" prefHeight="25.0" prefWidth="353.0">
+         <font>
+            <Font name="Baskerville Old Face" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

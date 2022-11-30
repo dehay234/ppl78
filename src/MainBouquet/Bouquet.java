@@ -2,6 +2,7 @@ package MainBouquet;
 
 import BouquetParts.Accessory;
 import BouquetParts.Flower;
+import logging.Logging;
 
 import java.util.*;
 import java.util.concurrent.Flow;
@@ -16,6 +17,28 @@ public class Bouquet {
         flowers = new ArrayList<Flower>();
         accessories= new ArrayList<Accessory>();
     }
+
+
+    public static ArrayList<String>showFlowers(){
+        ArrayList<String>flowStr=new ArrayList<>();
+
+        Iterator it = flowers.iterator();
+        while (it.hasNext()){
+            Flower f = (Flower)it.next();
+            flowStr.add(f.toString());
+        }
+        return flowStr;
+    }
+
+    public static ArrayList<String>showAccessories(){
+        ArrayList<String>accStr=new ArrayList<>();
+
+        for(Accessory acc : accessories){
+           accStr.add(acc.toString());
+        }
+        return accStr;
+    }
+
 
     public static boolean showBouquet(){
         System.out.println("Flowers:");
@@ -33,15 +56,17 @@ public class Bouquet {
     }
 
     public static void addFlower(Flower flower){
-        System.out.println("Flower added");
+     //   System.out.println("Flower added");
         flowers.add(flower);
         price+=flower.getPrice();
+      //  Logging.getLogger().info("Flower added to bouquet");
     }
 
     public static void addAccessory(Accessory accessory){
-        System.out.println("Accessory added");
+  //      System.out.println("Accessory added");
         accessories.add(accessory);
         price+= accessory.getPrice();
+ //       Logging.getLogger().info("Accessory added to bouquet");
     }
 
     public static String deleteFlower(){
@@ -70,10 +95,23 @@ public class Bouquet {
         flowers.remove(choice-1);
 
         System.out.println("Flower removed successfully");
+   //     Logging.getLogger().info("Flower was removed from bouquet");
         return "Flower removed successfully";
 
 
     }
+
+    public static void deleteFlowerForVisual(Flower flower){
+        flowers.remove(flower);
+        price-= flower.getPrice();
+    }
+
+
+    public static void deleteAccessoryForVisual(Accessory acc){
+        accessories.remove(acc);
+        price -= acc.getPrice();
+    }
+
     public static String deleteAccessory(){
         Scanner scanner = new Scanner(System.in);
         int iter = 0;
@@ -98,12 +136,14 @@ public class Bouquet {
         price -= accessories.get(choice-1).getPrice();
         accessories.remove(choice-1);
         System.out.println("Accessory removed successfully");
+  //      Logging.getLogger().info("Accessory was removed from bouquet");
         return "Accessory removed successfully";
 
     }
 
     public static void buyBouquet(){
         System.out.println("Bouquet costs "+ price);
+      //  Logging.getLogger().info("Bouquet was sold for "+price);
         System.exit(1);
     }
 
@@ -126,6 +166,10 @@ public class Bouquet {
                 return false;
         }
         return  true;
+    }
+
+    public static int getPrice() {
+        return price;
     }
 
     static class LengthComparator implements Comparator<Flower> {

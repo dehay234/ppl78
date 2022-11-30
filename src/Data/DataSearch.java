@@ -6,10 +6,10 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class DataSearch {
-    public static Flower searchFlowByVariety(){
+    public static Flower searchFlowByVariety(String variety){
         System.out.print("Enter variety: ");
         Scanner scanner = new Scanner(System.in);
-        String variety = scanner.nextLine();
+        if(variety==null) variety = scanner.nextLine();
         Flower res;
         int iterator=0;
         System.out.println("Choose flower: ");
@@ -39,17 +39,17 @@ public class DataSearch {
         return res;
 
     }
-    public static Flower searchFlowByLength(){
+    public static Flower searchFlowByLength(int length,int over){
         Flower res;
-        int iterator=0,over,length;
+        int iterator=0;
 
 
         System.out.print("Enter Length: ");
         Scanner scanner = new Scanner(System.in);
-        length = scanner.nextInt();
+        if(length == 0) length = scanner.nextInt();
 
         System.out.print("Do you want to search for lower(1) or higher(2)? ");
-        over = scanner.nextInt();
+        if(over == 0)over = scanner.nextInt();
 
         System.out.println("Choose flower: ");
         Iterator it = ItemsInfo.allFlowers.iterator();
@@ -78,17 +78,17 @@ public class DataSearch {
 
     }
 
-    public static Flower searchFlowByPrice(){
+    public static Flower searchFlowByPrice(int price, int over){
         Flower res;
-        int iterator=0,over,price;
+        int iterator=0;
 
 
         System.out.print("Enter Price: ");
         Scanner scanner = new Scanner(System.in);
-        price = scanner.nextInt();
+        if(price==0)price = scanner.nextInt();
 
         System.out.print("Do you want to search for lower(1) or higher(2)? ");
-        over = scanner.nextInt();
+        if(over ==0)over = scanner.nextInt();
 
         System.out.println("Choose flower: ");
         Iterator it = ItemsInfo.allFlowers.iterator();
@@ -118,14 +118,14 @@ public class DataSearch {
         return res;
 
     }
-    public static Flower searchFlowByFreshness(){
+    public static Flower searchFlowByFreshness(int freshness){
         Flower res;
-        int iterator=0,freshness;
+        int iterator=0;
 
 
         System.out.print("Enter Freshness: ");
         Scanner scanner = new Scanner(System.in);
-        freshness = scanner.nextInt();
+        if(freshness==0) freshness = scanner.nextInt();
 
         System.out.println("Choose flower: ");
         Iterator it = ItemsInfo.allFlowers.iterator();
@@ -155,10 +155,10 @@ public class DataSearch {
 
     }
 
-    public static Accessory searchAccByVariety(){
+    public static Accessory searchAccByVariety(String variety){
         System.out.print("Enter variety: ");
         Scanner scanner = new Scanner(System.in);
-        String variety = scanner.nextLine();
+        if (variety==null) variety = scanner.nextLine();
         Accessory res;
         int iterator=0;
         System.out.println("Choose accessory: ");
@@ -188,17 +188,17 @@ public class DataSearch {
 
     }
 
-    public static Accessory searchAccByPrice(){
+    public static Accessory searchAccByPrice(int price,int over){
         Accessory res;
-        int iterator=0,over,price;
+        int iterator=0;
 
 
         System.out.print("Enter Price: ");
         Scanner scanner = new Scanner(System.in);
-        price = scanner.nextInt();
+        if(price==0) price = scanner.nextInt();
 
         System.out.print("Do you want to search for lower(1) or higher(2)? ");
-        over = scanner.nextInt();
+        if(over==0) over = scanner.nextInt();
 
         System.out.println("Choose accessory: ");
         Iterator it = ItemsInfo.allAccessories.iterator();
@@ -227,6 +227,8 @@ public class DataSearch {
         return res;
 
     }
+
+
 
 
 }

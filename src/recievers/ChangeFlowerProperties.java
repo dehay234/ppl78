@@ -10,6 +10,6 @@ public class ChangeFlowerProperties implements Command {
         flower=f1;
     }
     public void execute(){
-        flower.changeProperties();
+        flower.changeProperties(0);
     }
 }

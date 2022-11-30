@@ -1,0 +1,10 @@
+.root{
+    -fx-background-color:"MediumPurple";
+}
+.button {
+    -fx-background-color: "DarkOrchid";
+        -fx-text-fill: "PaleGoldenRod";
+}
+.label{
+    -fx-text-fill: "DarkOrchid";
+}

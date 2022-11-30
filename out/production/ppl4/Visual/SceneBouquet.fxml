@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="691.0" prefWidth="939.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Visual.SceneBouquetContoller">
+   <children>
+      <Label alignment="CENTER" layoutX="192.0" layoutY="24.0" prefHeight="51.0" prefWidth="499.0" text="Bouquet Menu">
+         <font>
+            <Font name="Snap ITC" size="55.0" />
+         </font>
+      </Label>
+      <Button fx:id="showBouquetButton" layoutX="68.0" layoutY="142.0" mnemonicParsing="false" onAction="#showFlowers" prefHeight="44.0" prefWidth="164.0" text="Show Bouquet">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteFlowerButton" disable="true" layoutX="68.0" layoutY="199.0" mnemonicParsing="false" onAction="#deleteFlower" prefHeight="44.0" prefWidth="164.0" text="Delete Flower">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="deleteAccessoryButton" disable="true" layoutX="68.0" layoutY="254.0" mnemonicParsing="false" onAction="#deleteAccessory" prefHeight="44.0" prefWidth="164.0" text="Delete Accessory">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="sortButton" disable="true" layoutX="68.0" layoutY="309.0" mnemonicParsing="false" onAction="#sort" prefHeight="44.0" prefWidth="164.0" text="Sort">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="buyButton" disable="true" layoutX="68.0" layoutY="364.0" mnemonicParsing="false" onAction="#buyBouquet" prefHeight="44.0" prefWidth="164.0" text="Buy bouquet">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="backButton" layoutX="68.0" layoutY="529.0" mnemonicParsing="false" onAction="#back" prefHeight="44.0" prefWidth="164.0" text="Back">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </Button>
+      <ListView fx:id="flowerListView" layoutX="293.0" layoutY="162.0" prefHeight="184.0" prefWidth="591.0" />
+      <Label layoutX="293.0" layoutY="121.0" prefHeight="33.0" prefWidth="391.0" text="Flowers">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="293.0" layoutY="353.0" prefHeight="33.0" prefWidth="124.0" text="Accessories">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <ListView fx:id="accessoriesListView" layoutX="293.0" layoutY="396.0" prefHeight="177.0" prefWidth="591.0" />
+      <Label fx:id="resultLabel" layoutX="68.0" layoutY="428.0" prefHeight="72.0" prefWidth="164.0" wrapText="true">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

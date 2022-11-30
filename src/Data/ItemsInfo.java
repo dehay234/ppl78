@@ -2,7 +2,11 @@ package Data;
 
 import BouquetParts.*;
 import Invokers.BouquetInvoker;
+import Mail.EmailSender;
+import logging.Logging;
 
+import javax.mail.MessagingException;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -11,7 +15,7 @@ import java.util.Scanner;
 public class ItemsInfo {
     static ArrayList<Flower> allFlowers;
     static ArrayList<Accessory> allAccessories;
-    public ItemsInfo() {
+    public ItemsInfo() throws MessagingException, IOException {
         allFlowers = new ArrayList<Flower>();
         allAccessories = new ArrayList<Accessory>();
 
@@ -20,12 +24,14 @@ public class ItemsInfo {
 
         try {
             Connection connection = DriverManager.getConnection(url);
-            System.out.println("Connected");
+         //   Logging.getLogger().info("Connected");
             getAllFlowers(connection);
             getAllAccessories(connection);
 
         } catch (SQLException e) {
-            System.out.println("No Connection");
+
+           //Logging.getLogger().severe("No Connection");
+           new EmailSender("No connection to SSMS");
             e.printStackTrace();
         }
 
@@ -57,21 +63,31 @@ public class ItemsInfo {
 
     }
 
-    public static void showFlowers(){
+    public static ArrayList<Flower> getAllFlowers1() {
+        return allFlowers;
+    }
+
+    public static ArrayList<Accessory> getAllAccessories1() {
+        return allAccessories;
+    }
+
+    public static boolean showFlowers(){
         Iterator it = allFlowers.iterator();
         while (it.hasNext()){
             Flower f = (Flower)it.next();
             System.out.println(f);
         }
+        return true;
     }
-    public static void showAccessories(){
+    public static boolean showAccessories(){
         Iterator it = allAccessories.iterator();
         while (it.hasNext()){
             Accessory acc = (Accessory) it.next();
             System.out.println(acc);
         }
+        return true;
     }
-    public static void searchFlower(){
+    public static Flower searchFlower(){
         Flower flower=null;
         System.out.println("Choose parameter:\n" +
                 "1. Variety\n" +
@@ -82,15 +98,15 @@ public class ItemsInfo {
         Scanner scanner = new Scanner(System.in);
         int choice= scanner.nextInt();
         if(choice==1)
-            flower = DataSearch.searchFlowByVariety();
+            flower = DataSearch.searchFlowByVariety(null);
         else if(choice==2)
-            flower = DataSearch.searchFlowByLength();
+            flower = DataSearch.searchFlowByLength(0,0);
         else if(choice==3)
-            flower = DataSearch.searchFlowByFreshness();
+            flower = DataSearch.searchFlowByFreshness(0);
         else if (choice==4)
-            flower = DataSearch.searchFlowByPrice();
+            flower = DataSearch.searchFlowByPrice(0,0);
         else if (choice==5)
-            return;
+            return flower;
         else
             System.out.println("Wrong choice!");
 
@@ -101,14 +117,14 @@ public class ItemsInfo {
                     "3. Go back to search menu");
             choice = scanner.nextInt();
             if(choice==1){
-                flower.changeProperties();
+                flower.changeProperties(0);
             }
             else if(choice==2){
                 BouquetInvoker inv = new BouquetInvoker(flower,null);
                 inv.addFlower();
             }
         }
-
+        return flower;
     }
 
     public static void searchAccessory(){
@@ -120,9 +136,9 @@ public class ItemsInfo {
         Scanner scanner = new Scanner(System.in);
         int choice= scanner.nextInt();
         if(choice==1)
-            acc = DataSearch.searchAccByVariety();
+            acc = DataSearch.searchAccByVariety(null);
         else if(choice==2)
-            acc = DataSearch.searchAccByPrice();
+            acc = DataSearch.searchAccByPrice(0,0);
         else if(choice==3)
             return;
         else
